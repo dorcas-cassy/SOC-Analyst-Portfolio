@@ -31,6 +31,16 @@ The Project 01 screenshot below was captured from its working local case dashboa
 | --- | --- | --- |
 | ![Wazuh dashboard showing a reconnaissance alert](06-wazuh-incident-lab/evidence/wazuh-recon.png) | ![Wazuh dashboard showing failed and successful SSH authentication](06-wazuh-incident-lab/evidence/wazuh-ssh-auth.png) | ![Wazuh dashboard showing a cron file-integrity alert](06-wazuh-incident-lab/evidence/wazuh-cron-fim.png) |
 
+### Projects 02–05 — local analyst consoles
+
+| Phishing triage | LOLBin threat hunt |
+| --- | --- |
+| ![Working phishing-triage console](02-phishing-triage/evidence/dashboard.png) | ![Working LOLBin threat-hunt console](03-lolbin-threat-hunt/evidence/dashboard.png) |
+
+| Malware triage | Cloud identity investigation |
+| --- | --- |
+| ![Working malware-triage console](04-malware-triage-yara/evidence/dashboard.png) | ![Working cloud-identity investigation console](05-cloud-identity-investigation/evidence/dashboard.png) |
+
 ## Safety and publishing notes
 
 - No real credentials, malware, customer data, or live malicious infrastructure are included.
