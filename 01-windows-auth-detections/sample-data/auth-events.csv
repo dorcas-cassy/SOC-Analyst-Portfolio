@@ -1,0 +1,9 @@
+TimeGenerated,EventID,Computer,TargetUserName,IpAddress,LogonType,Status,FailureReason
+2026-09-18T10:01:11Z,4625,DC01,alex.king,10.10.20.55,,,Unknown user name or bad password
+2026-09-18T10:01:28Z,4625,DC01,ben.ross,10.10.20.55,,,Unknown user name or bad password
+2026-09-18T10:02:04Z,4625,DC01,maria.chen,10.10.20.55,,,Unknown user name or bad password
+2026-09-18T10:02:31Z,4625,DC01,nadia.patel,10.10.20.55,,,Unknown user name or bad password
+2026-09-18T10:03:18Z,4625,DC01,oliver.ng,10.10.20.55,,,Unknown user name or bad password
+2026-09-18T10:04:07Z,4625,DC01,sam.lee,10.10.20.55,,,Unknown user name or bad password
+2026-09-18T10:07:43Z,4624,FIN-WS-12,maria.chen,10.10.20.55,10,0x0,
+2026-09-18T10:09:01Z,4624,FIN-WS-08,priya.shah,10.10.8.14,10,0x0,

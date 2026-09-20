@@ -1,0 +1,15 @@
+From: "SharePoint Notifications" <sharepoint@northwind-docs.example>
+To: maria.chen@contoso.example
+Subject: Action required: Q3 Compensation Plan shared with you
+Date: Thu, 17 Sep 2026 09:14:03 +0000
+Return-Path: <bounce@northwind-docs.example>
+Authentication-Results: mx.contoso.example;
+ spf=fail smtp.mailfrom=northwind-docs.example;
+ dkim=fail header.d=northwind-docs.example;
+ dmarc=fail header.from=contoso-sharepoint.example
+Received: from 198.51.100.44 (HELO mail.northwind-docs.example)
+
+You have received a secure document. Review it before close of business:
+hxxps[://]contoso-sharepoint[.]example/login?doc=Q3-Compensation
+
+This message is synthetic. The destination is a reserved example domain and is not live.

@@ -1,0 +1,7 @@
+// Candidate analytic: encoded or download-related PowerShell execution
+DeviceProcessEvents
+| where Timestamp >= ago(1d) and FileName in~ ("powershell.exe", "pwsh.exe")
+| where ProcessCommandLine has_any (" -enc ", " -encodedcommand ", "FromBase64String", "DownloadString", "Invoke-WebRequest", "iwr ")
+| extend ParentIsOffice = InitiatingProcessFileName in~ ("winword.exe", "excel.exe", "powerpnt.exe", "outlook.exe")
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName, ParentIsOffice, ReportId
+| order by Timestamp desc

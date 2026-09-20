@@ -1,0 +1,23 @@
+// Investigative correlation: remote-interactive success after failures from same source
+// Use in an incident or as a low-volume analytic after validating local baseline behavior.
+let Lookback = 24h;
+let CorrelationWindow = 30m;
+let Failures = SecurityEvent
+| where TimeGenerated >= ago(Lookback) and EventID == 4625
+| where isnotempty(IpAddress) and IpAddress !in ("-", "127.0.0.1", "::1")
+| where TargetUserName !endswith "$"
+| project FailureTime = TimeGenerated, IpAddress, FailedAccount = TargetUserName,
+    FailureHost = Computer, FailureReason;
+let RdpSuccesses = SecurityEvent
+| where TimeGenerated >= ago(Lookback) and EventID == 4624 and LogonType == 10
+| where isnotempty(IpAddress) and IpAddress !in ("-", "127.0.0.1", "::1")
+| project SuccessTime = TimeGenerated, IpAddress, SuccessfulAccount = TargetUserName,
+    RdpHost = Computer, AuthenticationPackageName;
+Failures
+| join kind=inner RdpSuccesses on IpAddress
+| where SuccessTime between (FailureTime .. FailureTime + CorrelationWindow)
+| summarize FirstFailure = min(FailureTime), LastFailure = max(FailureTime),
+    TargetedAccounts = make_set(FailedAccount, 20), FailureHosts = make_set(FailureHost, 20)
+    by SuccessTime, IpAddress, SuccessfulAccount, RdpHost, AuthenticationPackageName
+| extend MITRETechnique = "T1021.001 - Remote Services: RDP"
+| order by SuccessTime desc

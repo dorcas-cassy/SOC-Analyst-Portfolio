@@ -1,0 +1,4 @@
+TimeGenerated,Source,UserPrincipalName,IPAddress,Country,Operation,Detail
+2026-09-19T06:40:00Z,SigninLogs,maria.chen@contoso.example,203.0.113.77,DE,SignIn,Known managed device
+2026-09-20T03:12:44Z,SigninLogs,maria.chen@contoso.example,198.51.100.67,BR,SignIn,New browser user agent; success
+2026-09-20T03:22:09Z,OfficeActivity,maria.chen@contoso.example,198.51.100.67,BR,New-InboxRule,ForwardTo external-recipient@example.net

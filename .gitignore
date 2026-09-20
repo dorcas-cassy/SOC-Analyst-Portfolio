@@ -1,0 +1,8 @@
+# Keep real logs, evidence exports, and secrets out of the portfolio.
+*.evtx
+*.pcap
+*.har
+.env
+*.pem
+*.key
+screenshots/private/

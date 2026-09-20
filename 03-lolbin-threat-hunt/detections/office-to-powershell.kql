@@ -1,0 +1,9 @@
+// Hunt: Office applications spawning scripting engines
+DeviceProcessEvents
+| where Timestamp >= ago(30d)
+| where InitiatingProcessFileName in~ ("winword.exe", "excel.exe", "powerpnt.exe", "outlook.exe")
+| where FileName in~ ("powershell.exe", "pwsh.exe", "cmd.exe", "wscript.exe", "cscript.exe", "mshta.exe")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+    InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessParentFileName,
+    InitiatingProcessSHA256, ReportId
+| order by Timestamp desc

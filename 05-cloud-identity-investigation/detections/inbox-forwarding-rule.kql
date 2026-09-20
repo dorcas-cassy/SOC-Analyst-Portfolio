@@ -1,0 +1,8 @@
+// Exchange audit: new or modified inbox rules that include forwarding/redirect actions
+OfficeActivity
+| where TimeGenerated >= ago(7d)
+| where OfficeWorkload == "Exchange" and Operation in~ ("New-InboxRule", "Set-InboxRule")
+| extend Parameters = tostring(parse_json(Parameters))
+| where Parameters has_any ("ForwardTo", "RedirectTo", "ForwardAsAttachmentTo")
+| project TimeGenerated, UserId, ClientIP, Operation, Parameters, OfficeObjectId, ResultStatus
+| order by TimeGenerated desc

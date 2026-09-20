@@ -1,0 +1,6 @@
+# Do not publish exported security telemetry or secrets.
+*.evtx
+*.etl
+*.pcap
+.env
+screenshots/private/

@@ -1,0 +1,12 @@
+// Investigation enrichment: Is the source IP recorded in the approved VPN-egress watchlist?
+// Upload sample-data/approved-vpn-egress.csv as watchlist alias ApprovedVpnEgress.
+let ApprovedVpn = _GetWatchlist("ApprovedVpnEgress")
+| project SearchKey, VpnService, Owner, ChangeReference;
+SecurityEvent
+| where TimeGenerated >= ago(24h) and EventID in (4624, 4625)
+| where isnotempty(IpAddress) and IpAddress !in ("-", "127.0.0.1", "::1")
+| join kind=leftouter ApprovedVpn on $left.IpAddress == $right.SearchKey
+| extend SourceClassification = iff(isempty(VpnService), "Not in approved VPN watchlist", "Approved VPN egress")
+| project TimeGenerated, EventID, IpAddress, SourceClassification, VpnService, Owner,
+    ChangeReference, TargetUserName, Computer, LogonType
+| order by TimeGenerated desc

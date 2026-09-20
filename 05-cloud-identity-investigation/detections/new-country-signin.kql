@@ -1,0 +1,11 @@
+// Candidate detection: successful sign-in from a country not seen for the user in prior 30 days
+let Baseline = SigninLogs
+| where TimeGenerated between (ago(31d) .. ago(1d)) and ResultType == "0"
+| summarize KnownCountries = make_set(tostring(LocationDetails.countryOrRegion), 100) by UserPrincipalName;
+SigninLogs
+| where TimeGenerated >= ago(1d) and ResultType == "0"
+| extend Country = tostring(LocationDetails.countryOrRegion)
+| join kind=leftouter Baseline on UserPrincipalName
+| where isnull(KnownCountries) or Country !in~ (KnownCountries)
+| project TimeGenerated, UserPrincipalName, IPAddress, Country, AppDisplayName, ClientAppUsed, UserAgent, KnownCountries
+| order by TimeGenerated desc
