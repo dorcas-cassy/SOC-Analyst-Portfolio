@@ -17,6 +17,14 @@ Six focused projects that demonstrate the day-to-day work of a Tier 1/2 SOC anal
 
 Each project has its own README, detection content, synthetic artifacts or data, and a completed investigation/report. Start with Project 01 for the most detailed SOC workflow; Project 06 is the most hands-on runnable lab.
 
+## Lab evidence gallery
+
+The following are direct screenshots from the local Wazuh dashboard used in Project 06—not generated mock-ups. Project 01 also contains a rendered environment-and-telemetry diagram in its [incident record](01-windows-auth-detections/docs/investigation.md).
+
+| SSH reconnaissance detection | Authentication investigation | Cron persistence evidence |
+| --- | --- | --- |
+| ![Wazuh dashboard showing a reconnaissance alert](06-wazuh-incident-lab/evidence/wazuh-recon.png) | ![Wazuh dashboard showing failed and successful SSH authentication](06-wazuh-incident-lab/evidence/wazuh-ssh-auth.png) | ![Wazuh dashboard showing a cron file-integrity alert](06-wazuh-incident-lab/evidence/wazuh-cron-fim.png) |
+
 ## Safety and publishing notes
 
 - No real credentials, malware, customer data, or live malicious infrastructure are included.
