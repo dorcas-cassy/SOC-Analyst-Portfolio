@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AFW SOC | Incident AFW-SOC-2026-0918-014</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside>
+    <div class="brand"><span class="mark">A</span><div><strong>ALDER &amp; FINCH</strong><small>Security Operations</small></div></div>
+    <nav><a class="active" href="#overview">Incident overview</a><a href="#timeline">Event timeline</a><a href="#detection">Detection logic</a><a href="#actions">Response actions</a></nav>
+    <div class="analyst"><span>ON CALL</span><strong>SOC Analyst</strong><small>Berlin · UTC</small></div>
+  </aside>
+  <main>
+    <header id="overview">
+      <div><p class="eyebrow">INCIDENT AFW-SOC-2026-0918-014</p><h1>Probable account compromise</h1><p class="subtitle">Month-end Portfolio Operations · <b>FIN-WS-12</b> · Maria Chen</p></div>
+      <div class="status"><span class="dot"></span> Contained in lab <button id="export">Export case summary</button></div>
+    </header>
+    <section class="notice"><span>HIGH</span><div><strong>Credential spray followed by RDP success</strong><p>One unapproved internal source targeted six accounts, then remotely signed in as a targeted user.</p></div><button id="showEvidence">Review evidence →</button></section>
+    <section class="metrics">
+      <article><span>FAILED ATTEMPTS</span><strong>6</strong><small>across 6 distinct accounts</small></article>
+      <article><span>RDP SUCCESS</span><strong>1</strong><small>same source · 3m 36s later</small></article>
+      <article><span>SOURCE STATUS</span><strong class="amber">Unapproved</strong><small>not in VPN-egress watchlist</small></article>
+      <article><span>BUSINESS IMPACT</span><strong>High</strong><small>month-end reporting asset</small></article>
+    </section>
+    <section class="grid">
+      <article class="panel timeline" id="timeline"><div class="panelhead"><div><p class="eyebrow">CORRELATED ACTIVITY</p><h2>Incident timeline</h2></div><span>18 Sep 2026 · UTC</span></div><div id="events"></div></article>
+      <article class="panel assessment"><p class="eyebrow">ANALYST ASSESSMENT</p><h2>Why this is not routine remote work</h2><ul><li><i>✓</i>Distinct-account failures exceed the password-spray threshold.</li><li><i>✓</i>Maria was among the targeted accounts.</li><li><i>✓</i>RDP success came from the same source IP.</li><li><i>✓</i>User verification denied the remote session.</li></ul><div class="confidence"><span>Assessment confidence</span><b>High</b><div><em></em></div></div></article>
+    </section>
+    <section class="grid lower">
+      <article class="panel" id="detection"><p class="eyebrow">DETECTION DECISION</p><h2>Source enrichment</h2><div class="compare"><div><span>10.10.20.55</span><strong>Not in approved VPN watchlist</strong><small>Investigate owner via DHCP / CMDB / NAC</small></div><div><span>10.10.8.14</span><strong class="green">AFW-REMOTE Berlin</strong><small>Known-good comparison source</small></div></div></article>
+      <article class="panel" id="actions"><p class="eyebrow">CONTAINMENT</p><h2>Response actions</h2><div class="actions"><label><input checked type="checkbox"> Account disabled and password reset</label><label><input checked type="checkbox"> Cloud sessions revoked</label><label><input checked type="checkbox"> FIN-WS-12 isolated</label><label><input type="checkbox"> Review endpoint process tree</label><label><input type="checkbox"> Identify source-system owner</label></div></article>
+    </section>
+  </main>
+  <dialog id="caseDialog"><button class="close">×</button><p class="eyebrow">EVIDENCE SUMMARY</p><h2>Password spray + RDP correlation</h2><p>The same unapproved source IP attempted six accounts between 10:01 and 10:04 UTC, then established an RDP session to FIN-WS-12 as Maria Chen at 10:07 UTC.</p><pre>MITRE: T1110.003  •  T1021.001  •  T1078</pre></dialog>
+  <script src="app.js"></script>
+</body>
+</html>

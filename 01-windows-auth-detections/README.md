@@ -23,6 +23,14 @@ Determine whether the alert is routine month-end access, a false positive caused
 
 The lab case is assessed as **probable account compromise (High)**. The distinct-account failure pattern is consistent with password spraying. The later successful RDP session uses one of the targeted accounts from the same non-approved source; Maria confirms that she was working from the Berlin office and did not initiate a remote session. `FIN-WS-12` is isolated, Maria's sessions are revoked, and the Portfolio Operations manager is provided with a replacement VDI plan.
 
+## Working dashboard and evidence
+
+This project includes a no-dependency, interactive local investigation dashboard. It renders the synthetic event data, source-enrichment result, analyst assessment, and containment checklist used in the case. It is intentionally labelled as a local lab dashboard, rather than a screenshot claimed to be from Microsoft Sentinel.
+
+Open [`dashboard/index.html`](dashboard/index.html) in a browser to use it. The committed screenshot below was captured from that working local dashboard.
+
+![Local SOC investigation dashboard showing the correlated password spray and RDP incident](evidence/afw-soc-incident-dashboard.png)
+
 ## Repository map
 
 | Path | What a reviewer should look at |
@@ -35,6 +43,8 @@ The lab case is assessed as **probable account compromise (High)**. The distinct
 | [`docs/triage-playbook.md`](docs/triage-playbook.md) | Reusable analyst procedure |
 | [`sample-data/auth-events.csv`](sample-data/auth-events.csv) | Synthetic event excerpt for walkthroughs |
 | [`sample-data/approved-vpn-egress.csv`](sample-data/approved-vpn-egress.csv) | Example Sentinel watchlist data |
+| [`dashboard/`](dashboard/) | Runnable, dependency-free local case dashboard |
+| [`evidence/`](evidence/) | Screenshots captured from the local dashboard |
 
 ## Detection design decisions
 

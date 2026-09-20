@@ -19,7 +19,13 @@ Each project has its own README, detection content, synthetic artifacts or data,
 
 ## Lab evidence gallery
 
-The following are direct screenshots from the local Wazuh dashboard used in Project 06—not generated mock-ups. Project 01 also contains a rendered environment-and-telemetry diagram in its [incident record](01-windows-auth-detections/docs/investigation.md).
+The Project 01 screenshot below was captured from its working local case dashboard. The Wazuh screenshots are direct captures from the local Wazuh dashboard used in Project 06—not generated mock-ups.
+
+### Project 01 — local SOC case dashboard
+
+![Local dashboard for the month-end RDP compromise investigation](01-windows-auth-detections/evidence/afw-soc-incident-dashboard.png)
+
+### Project 06 — Wazuh lab evidence
 
 | SSH reconnaissance detection | Authentication investigation | Cron persistence evidence |
 | --- | --- | --- |
